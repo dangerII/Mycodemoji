@@ -1,0 +1,189 @@
+  /*
+color palette
+
+  black
+  #5D5D5D
+
+  gray
+  #B3B3B3
+
+  light gray
+  #E5E5E5
+
+
+rgb(244,96,96) rgb(undefined,undefined,undefined) rgb(undefined,undefined,undefined) rgb(undefined,undefined,undefined) rgb(undefined,undefined,undefined) rgb(undefined,undefined,undefined) rgb(undefined,undefined,undefined) rgb(undefined,undefined,undefined)
+*/
+
+@font-face {
+    font-family: 'FiraMono';
+    src: url('../font/firamono-bold-webfont.eot');
+    src: url('../font/firamono-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/firamono-bold-webfont.woff2') format('woff2'),
+         url('../font/firamono-bold-webfont.woff') format('woff'),
+         url('../font/firamono-bold-webfont.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'FiraMono-Medium';
+    src: url('../font/firamono-medium-webfont.eot');
+    src: url('../font/firamono-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/firamono-medium-webfont.woff2') format('woff2'),
+         url('../font/firamono-medium-webfont.woff') format('woff'),
+         url('../font/firamono-medium-webfont.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'fira_sans';
+    src: url('../font/firasans-regular-webfont.eot');
+    src: url('../font/firasans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/firasans-regular-webfont.woff2') format('woff2'),
+         url('../font/firasans-regular-webfont.woff') format('woff'),
+         url('../font/firasans-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'fira_mono';
+    src: url('../font/firamono-medium-webfont.eot');
+    src: url('../font/firamono-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/firamono-medium-webfont.woff2') format('woff2'),
+         url('../font/firamono-medium-webfont.woff') format('woff'),
+         url('../font/firamono-medium-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* color */
+
+[gray]{
+  color: #B3B3B3;
+  border-bottom-color: #B3B3B3; 
+}
+
+/* text */
+
+[style-title]{
+    font-size: 190%;
+    letter-spacing: 5px;
+    line-height: 109%;
+}
+
+[style-text]{
+    font-size: 90%;
+    line-height: 22px;
+    letter-spacing: 1px;
+}
+
+[style-sub]{
+    font-size: 140%;
+    letter-spacing: 5px;
+    line-height: 109%;
+}
+
+
+[style-lable]{
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    line-height: 109%;
+}
+
+[style-input]{
+    font-size: 100%;
+    letter-spacing: 1px;
+    line-height: 109%;
+}
+
+[style-huge]{
+    font-size: 400%;
+    letter-spacing: 5px;
+    line-height: 109%;
+}
+
+/* buttons */
+
+[button-box]{
+  padding:5px 15px;
+  background-color: transparent;
+  border:2px solid #5D5D5D;
+  cursor:pointer;
+  color: #5D5D5D;
+  outline: none;
+  display:inline-block;
+  text-shadow: none;
+  text-decoration: none; 
+  font-size: 80%;
+  border-radius: 22px;
+}
+
+/*  min-width: 20rem;
+  text-align: center;
+  border: none;
+  padding: 0.8rem 1.4rem .6rem 1.4rem;
+  margin: 0;*/
+
+
+
+
+[button-box]:active{
+  position:relative;
+  top:1px;
+  text-decoration:none;
+  background-color: #B3B3B3;
+}
+
+[button-line]{
+  background-color: transparent;
+  border: none;
+  cursor:pointer;
+  outline: none;
+  display:inline-block;
+  text-shadow: none;
+  text-decoration: none; 
+  font-size: 80%;
+  border-bottom: solid 2px;
+  min-height: 30px;
+}
+
+[button-line]:active{
+  position:relative;
+  top:1px;
+  text-decoration:none;
+  background-color: #B3B3B3;
+}
+
+
+
+[text="small-medium"]{
+    font-size: 80%;
+    margin: 0;
+    padding: 0;
+}
+
+[text="title lightblue"]{
+    color: rgb(71, 188, 217);;
+}
+
+[text="title blue"]{
+    color: #01898B;
+}
+
+[text="title white"]{
+    color: white;
+}
+
+[wide]{
+    width: 100%;
+}
+
+[center]{
+    text-align: center;
+}
+
+[uppercase]{
+    text-transform: uppercase;
+}
+

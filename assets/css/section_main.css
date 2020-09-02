@@ -1,0 +1,439 @@
+.section_main{
+  z-index: 8;
+  padding: 0;
+}
+
+.section_main_wrapper{
+  width: 100%;
+  height: 100%;
+}
+
+.main_content_top,
+.main_content_bottom{
+  height: auto;
+  width: 100%;
+  position: relative;
+}
+
+/*.decryption .main_content_bottom{
+  background-color: #B3B3B3;
+}
+
+.decryption .main_content_top{
+  background-color: #4D4D4D;
+}*/
+
+.main_content_bottom{
+  padding-top: 2.2rem;
+  margin-bottom: 45px;
+}
+
+.main_keyslider{
+  width: 100%;
+  min-height: 9rem;
+  background-color: white;
+  position: relative;
+  opacity: 1;
+}
+
+.main_keyslider .header__label{
+  top: 1rem;
+  opacity: .5;
+}
+
+.header__label{
+  position: absolute;
+  top: .8rem;
+  left: .7rem;
+  opacity: .5;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.svg_wrapper_plus{
+  width: 4.5rem;
+  height: 4.5rem;
+}
+
+.svg_wrapper_plus svg{
+  width: 4.5rem;
+  height: 4.5rem;
+  transition: transform .5s;
+}
+
+.main_keyslider_spacer{
+  width: 100%;
+  height: 14px;
+  background-color: transparent;
+}
+
+.main_key_modal{
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: #F2F2F2;
+  z-index: 3000;
+  transform: translate(0,-100%);
+  transition: transform .5s;
+}
+.main_key_modal-open .main_key_modal {
+  transform: translate(0,0%);
+}
+
+.main_key_modal-open .svg_wrapper_plus svg{
+  transform: rotate(225deg);
+}
+
+.main_key_modal_emoji_wrapper{
+  position: relative;
+  width: 100%;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  padding: 1.2rem 1rem .6rem 1rem;
+  font-size: 200%;
+  height: 100%;
+  overflow:hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.main_key_modal_emoji_container{
+  height: 100%;
+  flex-wrap: wrap;
+  width: 100%;
+} 
+.main_key_modal_emoji_container p{
+  margin: 0;
+  padding: 0;
+  position: relative;
+  font-size: 80%;
+}
+.main_key_modal_emoji_container p.selected:after{
+  content: "";
+  width: 100%;
+  height: 6px;
+  background-color: #FBBFBF;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  border-radius: 3px;
+}
+.main_key_modal_pages{
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  -webkit-transform: translate(-50%,0);
+          transform: translate(-50%,0);
+}
+
+.main_content_top .header__label,
+.main_content_bottom .header__label{
+  color: white;
+}
+
+
+/*.main_keyslider:after{
+  position: absolute;
+  content: "";
+  width: 3px;
+  height: 20px;
+  left: 3rem;
+  top: 0;
+  transform: translate(-50%,-100%);
+  background-color: #E6E6E6;
+  z-index: 2500;
+}
+
+.main_keyslider:before{
+  position: absolute;
+  content: "";
+  width: 3px;
+  height: 20px;
+  left: 3rem;
+  bottom: 0;
+  transform: translate(-50%,100%);
+  background-color: #E6E6E6;
+  z-index: 2500;
+}
+*/
+.main_keyslider_bubble-top{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 3rem;
+  bottom: -20px;
+  -webkit-transform: translate(-50%,100%);
+          transform: translate(-50%,100%);
+  background-color: #E6E6E6;
+  border-radius: 50%;
+  z-index: 2500;
+}
+
+.main_keyslider_bubble-bottom{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 3rem;
+  top: -20px;
+  -webkit-transform: translate(-50%,-100%);
+          transform: translate(-50%,-100%);
+  background-color: #E6E6E6;
+  border-radius: 50%;
+  z-index: 2500;
+}
+
+.main_keyslider_bubble-top p,
+.main_keyslider_bubble-bottom p{
+  margin: 0;
+  padding: 0;
+  font-size: 80%;
+  opacity: .5;
+  text-align: center;
+}
+
+
+.main_content_top_input{
+  background-color: transparent;
+  /* remove default styling */
+  border: none;
+  overflow: auto;
+  outline: none;
+  box-shadow: none;
+  /* prevent textarea resize behaviour */
+  resize: none;
+  margin-top: 2.1rem;
+  width: 100%;
+}
+
+.encryption .main_content_top_input{
+  padding: 0 5rem 1rem .7rem;
+}
+
+.decryption .main_content_top_input{
+  padding: 0 .7rem 1rem .7rem;
+}
+
+.main_content_bottom_input{
+  background-color: transparent;
+  margin: 0 0.7rem;
+  overflow-y: auto;
+  margin-bottom: 5px;
+}
+
+.main_content_bottom_input.placeholdit {
+  color: white;
+  opacity: .5;
+}
+.main_content_bottom_input.placeholdit:after {
+  content: attr(placeholder);
+}
+
+.main_keyslider_cicle{
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  -webkit-transform: translate(0,-50%);
+          transform: translate(0,-50%);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.keyslider{
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow:hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.keyslider_content{
+  position: absolute;
+  left: 0;
+  height: 100%;
+  font-size: 250%;
+  padding-top: 2.6rem;
+  padding-left: 1.4rem;
+}
+
+.keyslider .key{
+  margin: 0 0rem; 
+  position: relative;
+}
+
+.keyslider .key.selected:after {
+  content: "";
+  width: 100%;
+  height: 8px;
+  background-color: #FBBFBF;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  position: absolute;
+  border-radius: 4px;
+}
+
+.header__input{
+  top: 4px;
+  text-align: center;
+  border: none;
+  height: 9rem;
+  color: white;
+  text-align: left;
+  padding-top: 6px;
+}
+
+.encryption_share_button {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.main_share{
+  height: 45px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;  
+  transform: translate(0,100%);
+  transition: transform .2s;
+}
+
+.main_share-open .main_share{
+  transform: translate(0,0%);
+}
+
+.main_keyslider_plus{
+  height: 100%;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  transform: translate(100%,0);
+  transition: transform .5s;
+}
+
+.main_keyslider_plus-show .main_keyslider_plus{
+  transform: translate(0%,0);
+}
+
+.main_keyslider_plus_circle{
+  width: 3rem;
+  height: 3rem;
+  background-color: white;
+  border-radius: 50%;
+  margin: auto;
+  transform: translate(0, 1rem);
+}
+
+.main_keyslider_plus_wrp{
+  width: 100%;
+  height: 100%;
+}
+
+.encryption_input_count{
+  /*bottom: 1rem;*/
+  /*left: 2rem;*/
+   bottom: .8rem;
+    right: .7rem;
+  position: absolute;
+  margin-left: 0;
+  margin-bottom: 0;
+  margin-right: 0;
+  padding: 0;
+  color: white;
+  opacity: .5;
+}
+
+.encryption_input_count.oversize{
+  color: red;
+}
+
+.svg_wrapper_x{
+  position: absolute;
+  right: -0.1rem;
+  top: 2.5rem;
+  width: 45px;
+  height: 45px;
+  fill: white;
+  opacity: .5;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+/*******************************************************************************
+ * multiple repetition for cross-browser placeholder styling.
+ * IT IS ANNOYING, but please remember to update ALL styles.
+ ******************************************************************************/
+/* all browser with support for ::placeholder */
+.main_content_top_input::placeholder {
+  color: white;
+  opacity: .5;
+  transition: 1s;
+}
+.main_content_top_input-first .main_content_top_input::placeholder {
+  color: white;
+  opacity: 1;
+}
+/* chrome */
+.main_content_top_input::-webkit-input-placeholder {
+  color: white;
+  opacity: .5;
+  transition: 1s;
+}
+.main_content_top_input-first .main_content_top_input::-webkit-input-placeholder {
+  color: white;
+  opacity: 1;
+}
+/* FF */
+.main_content_top_input::-moz-placeholder {
+  color: white;
+  opacity: .5;
+  transition: 1s;
+}
+.main_content_top_input-first .main_content_top_input::-moz-placeholder {
+  color: white;
+  opacity: 1;
+}
+/* IE */
+.main_content_top_input:-ms-input-placeholder {
+  color: white;
+  opacity: .5;
+  transition: 1s;
+}
+.main_content_top_input-first .main_content_top_input:-ms-input-placeholder {
+  color: white;
+  opacity: 1;
+}
+
+/******************************************************************************/
+
+/*desktop*/
+
+.desktop_main_selected_key_circle{
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    background-color: gray;
+    padding: 1.5rem;
+}
+
+.desktop_main_selected_key{
+      padding: 7rem 3.4rem;
+}
+.desktop_main_selected_key_description{
+  margin-left: 1rem;
+}
+
+

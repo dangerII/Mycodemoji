@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0'/>
+  <title>Mozilla Cryptoloji</title>
+
+  <!-- share meta descriptions -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Cryptoloji" />
+  <meta property="og:description" content="A secret message" />
+  <!-- <meta property="og:image" content="" /> -->
+  <meta property="og:site_name" content="Cryptoloji" />
+
+
+  <!-- build:css style.css -->  
+  <link rel="stylesheet" type="text/css" href="bower_components/normalize-css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/font.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/color.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/flex.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/generic.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/module_header.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/section_welcome.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/section_main.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/section_share.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/section_onboarding.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/section_loading.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/section_more.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/js_handlers.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/desktop.css">
+  <!-- endbuild -->
+
+  <!-- <script type="text/javascript" src="assets/text/text.json"></script> -->
+  <script type="text/javascript">
+    // Setup global namespace
+    window.Cryptoloji = {
+      states: {},
+      current: { input: null, output: null, key: null }
+    }
+    // Maybe? var keysliderEmojiList = [ '😁', '👀', '🚀', '🍉', '⚡', '💩', '😡', '🍕', '🍊', '😱' ]
+  </script>
+  <!-- load polyfills at the beginning -->
+  <script type="text/javascript" src="vendor/fromcodepoint.js"></script>
+  <script type="text/javascript" src="vendor/prefixfree.min.js"></script>
+</head>
+<body class="main_content_top_input-first">
+
+
+<!--   <div id="header" class="header">
+      <div layout="column" layout-align="center center">
+          <div class="svg_wrapper svg_wrapper_header" data-svg="assets/svg/header.svg"
+               layout="column" layout-align="center center"></div>
+      </div>
+  </div> -->
+
+
+  <!-- MODAL_KEYS -->
+  <div id="key-modal" class="main_key_modal">
+    <div class="main_key_modal_emoji_wrapper" layout="column" layout-align="start center">
+      <div class="main_key_modal_emoji_container" layout="column" layout-align="start center">
+        <!-- js injected -->
+      </div>
+    </div>
+  </div>
+  <!-- /MODAL_KEYS -->
+
+
+  <!-- LANDSCAPE OVERLAY -->
+  <div class="landscape-overlay" layout="column" layout-align="center center" color-bg-main>
+    <div class="content" flex layout="column" layout-align="center center">
+      <img src="assets/svg/lock-rotation.svg" alt="Rotation locked" />
+    </div>
+  </div>
+  <!-- /LANDSCAPE OVERLAY -->
+  
+
+  <!-- WELCOME views/welcome -->
+  <div class="section_welcome section" color-bg-dark color-light layout="column" layout-align="center center">
+    <div class="section_welcome_header" color-bg-light layout="column" layout-align="start center" wide>
+      <div class="svg_wrapper svg_wrapper_header_logo" data-svg="assets/svg/mozilla_logo.svg" color-fill-main-alt
+           layout="column" layout-align="center center"></div>
+      <div class="svg_wrapper svg_wrapper_header_name" data-svg="assets/svg/header.svg" color-fill-main-alt
+           layout="column" layout-align="center center"></div>
+      <p flex class="section_welcome_header_text" color-main style-text>THE FUN ENCRYPTION TOOL</p>
+    </div>
+    <div class="section_welcome_main" color-bg-dark layout="column" layout-align="end center" wide flex>
+        <p flex class="welcome_text" layout="column" layout-align="center center">
+          Turn your message into fun emojis, share it, and bring a smile to your friends' face
+        </p>
+        <button uppercase button-box class="welcome_button_more" to-state="onboarding" color-light border-light
+                layout="column" layout-align="center center">
+          TRY IT
+        </button>
+        <div class="welcome_link_wrapper" wide layout="row" layout-align="start center">
+          <p class="welcome_link">Legal</p>
+          <p class="welcome_link">Privacy Policy</p>
+        </div>
+        <!-- <button uppercase button-box class="welcome_button_send" to-state="encrypt" color-light border-light>Send a secret message</button> -->
+        <!-- <button uppercase button-line class="welcome_button_receive" to-state="decrypt" gray>Decrypt a secret message</button>     -->
+      </div>
+<!--       <div class="section_welcome_footer" color-bg-main-alt layout="column" layout-align="end center" wide>
+        <p color-light style-lable>lorem ipsum dolor</p>
+        <div layout="row" layout-align="end center">
+          <p color-light style-lable>Cryptoloji is part of  Mozilla </p>
+          <p color-light style-lable>Mozilla campaign</p>
+        </div>
+      </div> -->
+  </div>
+  <!-- /WELCOME -->
+
+  <!-- LANDING views/landing -->
+  <div class="section_landing section" color-bg-dark color-light layout="column" layout-align="center center">
+    <div class="section_welcome_header" color-bg-light layout="column" layout-align="start center" wide>
+      <div class="svg_wrapper svg_wrapper_header_logo" data-svg="assets/svg/mozilla_logo.svg" color-fill-main-alt
+           layout="column" layout-align="center center"></div>
+      <div class="svg_wrapper svg_wrapper_header_name" data-svg="assets/svg/header.svg" color-fill-main-alt
+           layout="column" layout-align="center center"></div>
+      <p class="section_welcome_header_text" color-main style-text>THE FUN ENCRYPTION TOOL landing</p>
+    </div>
+    <div class="section_welcome_main" color-bg-dark layout="column" layout-align="space-between center" wide flex>
+        <div flex class="welcome_text" layout="column" layout-align="start center">
+          Mozilla has shared a message with you.
+          <p></p>
+        </div>
+        <p class="landing_small_text">It's encrypted into emojis but can read it here (if you have the rigth key)</p>
+        <button uppercase button-box class="welcome_button_more" to-state="onboarding" color-light border-light
+                layout="column" layout-align="center center">
+          NEXT
+        </button>
+        <div class="welcome_link_wrapper" wide layout="row" layout-align="start center">
+          <p class="welcome_link">Legal</p>
+          <p class="welcome_link">Privacy Policy</p>
+        </div>
+        <!-- <button uppercase button-box class="welcome_button_send" to-state="encrypt" color-light border-light>Send a secret message</button> -->
+        <!-- <button uppercase button-line class="welcome_button_receive" to-state="decrypt" gray>Decrypt a secret message</button>     -->
+    </div>
+  </div>
+  <!-- /LANDING -->
+
+  <!-- ONBOARDING views/onboarding -->
+  <div class="section_onboarding section">
+
+    <div layout="row" class="slider_wrapper">
+      <div layout="column" layout-align="center center" wide flex>
+      </div>
+      <div layout="column" layout-align="center center" wide flex>
+      </div>
+      <div layout="column" layout-align="center center" wide flex>
+      </div>
+      <div layout="column" layout-align="center center" wide flex>
+      </div>
+      <div layout="column" layout-align="center center" wide flex>
+      </div> 
+      <div layout="column" layout-align="center center" wide flex>
+      </div>
+    </div>
+
+    <div class="onboarding_wrapper_ui" layout="column" layout-align="center center" wide flex>
+
+      <div id="onboarding_svg" layout="column" layout-align="center center" wide data-svg="assets/svg/onboarding_bottom.svg"></div>
+    
+      <div class="onboarding_pages" layout="row" layout-align="center center">
+        <div class="current"><img src="assets/img/smile.png" /></div>
+        <div><img src="assets/img/smile.png" /></div>
+        <div><img src="assets/img/smile.png" /></div>
+        <div><img src="assets/img/smile.png" /></div>
+        <div><img src="assets/img/smile.png" /></div>
+      </div>
+
+      <div class="onboarding_skip" wide>
+        <a href="" to-state="encrypt">skip</a>
+      </div>
+
+    </div>
+  </div>
+  <!-- /ONBOARDING -->
+
+  <!-- LOADING loading -->
+  <div class="section_loading section" color-bg-dark>
+    <div class="section_loading_wrapper" layout="column" layout-align="center center" wide>
+      <div class="svg_wrapper svg_wrapper_loading" data-svg="assets/svg/loading1.svg"></div>
+    </div>
+    <p class="section_loading_text" style-text color-light>THE FUN ENCRYPTION TOOL</p>
+  </div>
+  <!-- /LOADING -->
+
+  <!-- ENCRYPTION views/encryption -->
+  <div class="section_main section encryption" layout="column" layout-align="start center" color-bg-dark>
+    <div class="section_main_wrapper" layout="column" layout-align="center center">
+      <div class="header" layout="column" layout-align="center center" color-bg-light wide>
+          <div class="svg_wrapper svg_wrapper_header" data-svg="assets/svg/header.svg"
+               layout="column" layout-align="center center"></div>
+          <p hideItIfMobile class="header_desktop_lable" style-text color-main>THE FUN ENCRYPTION TOOL</p>
+      </div>
+      <div class="main_content_top" flex layout="column" color-bg-main>
+        <label uppercase class="header__label main_content_top_label" style-lable>YOUR MESSAGE</label>
+        <textarea flex id="encryption_input" class="header__input main_content_top_input" style-input placeholder="Write your message here."></textarea>
+        <p id="encryption_input_count" class="encryption_input_count main_content_top_label" uppercase style-lable></p>
+        <div id="encryption_input_cleaner" class="svg_wrapper svg_wrapper_x" data-svg="assets/svg/x.svg"></div>
+      </div>
+      
+      <div id="encryption_keyslider" class="main_keyslider">
+        <div hideItIfMobile>        
+          <div class="desktop_main_selected_key" layout="row" layout-align="start center">
+            <div class="desktop_main_selected_key_circle">
+              <!-- key selected -->
+              <div class="svg_wrapper svg_wrapper_desktop_key" data-svg="assets/svg/x.svg"></div>
+            </div>
+            <p class="desktop_main_selected_key_description">description</p>
+          </div>
+        </div>
+        <label class="header__label main_keyslider_bottom_label" uppercase style-lable color-dark>YOUR KEY</label>
+        <div class="keyslider" showItifMobile>
+          <div class="keyslider_content unselectable" layout="row" layout-align="start center">
+            <!-- js injected -->
+          </div>
+        </div>
+        <div id="encryption_keypanel" hideItifMobile class="main_key_panel_emoji_wrapper" layout="column" layout-align="start center">
+          <div class="main_key_panel_emoji_container" layout="column" layout-align="start center">
+            <!-- js injected -->
+          </div>
+        </div>
+        <div class="main_keyslider_plus" color-bg-main-ligther>
+          <div class="main_keyslider_plus_wrp" id="encryption_key_modal_open" layout="column" layout-align="center center">
+            <div class="main_keyslider_spacer"></div>
+            <div class="svg_wrapper svg_wrapper_plus" data-svg="assets/svg/plus.svg" color-fill-main-ligther></div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="main_content_bottom" flex layout="column" color-bg-dark>
+        <label class="header__label main_content_bottom_label" uppercase style-lable>YOUR SECRET MESSAGE</label>
+        <div flex id="encryption_output" class="header__input main_content_bottom_input unselectable placeholdit" 
+             placeholder="Pick a key to see your message encrypted here." style-input></div>
+      </div>
+      <div id="encryption_share_button">
+        <div class="main_share" layout="column" layout-align="start center">
+          <a class="encryption_share_button" to-state="share" color-light button-box border-light>Share this message</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /ENCRYPTION -->
+
+
+  <!-- DECRYPTION views/decryption -->
+  <div class="section_main section decryption" layout="column" layout-align="start center" color-bg-main>
+    <div class="section_main_wrapper" layout="column" layout-align="center center">
+      <div class="header" layout="column" layout-align="center center" color-bg-light wide>
+          <div class="svg_wrapper svg_wrapper_header" data-svg="assets/svg/header.svg"
+               layout="column" layout-align="center center"></div>
+      </div>
+      <div class="main_content_top" flex layout="column" color-bg-dark>
+        <label class="header__label main_content_top_label" uppercase style-lable>SECRET MESSAGE RECEIVED</label>
+        <div flex id="decryption_input" class="header__input main_content_top_input" style-input>
+          <!-- js injected -->
+        </div>
+      </div>
+      <div id="decryption_keyslider" class="main_keyslider">
+        <label class="header__label main_keyslider_bottom_label" uppercase style-lable>Pick a key</label>
+        <div class="keyslider">
+          <div class="keyslider_content unselectable" layout="row" layout-align="start center">
+            <!-- js injected -->
+          </div>
+        </div>
+        <div class="main_keyslider_plus" color-bg-main-ligther>
+          <div class="main_keyslider_plus_wrp" id="decryption_key_modal_open"  layout="column" layout-align="center center">
+            <div class="main_keyslider_spacer"></div>
+            <div class="svg_wrapper svg_wrapper_plus" data-svg="assets/svg/plus.svg" color-fill-main-ligther></div>
+          </div>
+        </div>
+      </div>
+      <div class="main_content_bottom" flex layout="column">
+        <label class="header__label main_content_bottom_label" uppercase style-lable>MESSAGE REVEALED</label>
+        <div flex id="decryption_output" 
+             class="header__input main_content_bottom_input unselectable placeholdit" 
+             placeholder="Your message will be encrypted here."></div>
+      </div>
+      <div id="decryption_reply_button">
+        <div class="main_share" layout="column" layout-align="start center">
+          <a uppercase class="encryption_share_button" to-state="encrypt" color-light button-box border-light>Reply</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /DECRYPTION -->
+
+
+  <!-- SHARE views/share -->
+  <div color-bg-main class="section_share section" layout="column" layout-align="start center">
+    <div class="share_social" layout="column" layout-align="space-around center" flex wide>
+      <div id="share_message_exit" class="share_message_exit" style-title to-state="encrypt" data-svg="assets/svg/x.svg"></div>
+      <div class="share_message">
+        <span style-text uppercase color-light>SHARE THIS MESSAGE</span>
+      </div>
+
+      <div>
+        <lable style-lable color-light class="share_social_lable">Shout it from the rooftops</lable>
+        <div class="share_social_wrapper" layout="row" layout-align="space-around center">
+          <a id="share_button_fb" class="social">
+            <div class="svg_wrapper svg_wrapper_social" data-svg="assets/svg/social_fb.svg"></div>
+          </a>
+          <a id="share_button_tw" class="social">
+            <div class="svg_wrapper svg_wrapper_social" data-svg="assets/svg/social_tw.svg"></div>
+          </a>
+          <a id="share_button_go" class="social">
+            <div class="svg_wrapper svg_wrapper_social" data-svg="assets/svg/social_go.svg"></div>
+          </a>
+          <!-- tumblr doesn't like their share widget. 
+          <a id="share_button_tu" class="social">
+            <div class="svg_wrapper svg_wrapper_social" data-svg="assets/svg/social_tu.svg"></div>
+          </a> -->
+        </div>
+      </div>
+
+      <div>
+        <lable style-lable color-light class="share_social_lable">Send it to someone special</lable>
+        <div class="share_social_wrapper" layout="row" layout-align="center center">
+          <a id="share_button_wa" class="social">
+            <div class="svg_wrapper svg_wrapper_social" data-svg="assets/svg/social_wa.svg"></div>
+          </a>
+          <!-- <a href="" class="social">
+            <div class="svg_wrapper svg_wrapper_social" data-svg="assets/svg/social_fm.svg"></div>
+          </a> -->
+          <a id="share_button_ma" class="social">
+            <div class="svg_wrapper svg_wrapper_social" data-svg="assets/svg/social_ma.svg"></div>
+          </a>
+          <!-- <a href="" class="social">
+            <div class="svg_wrapper svg_wrapper_social" data-svg="assets/svg/social_wa.svg"></div>
+          </a> -->
+        </div>
+      </div>
+
+      <div>
+        <lable style-lable color-ligth class="share_social_lable">Copy link</lable>
+        <div layout="row" layout-align="space-around center" wide>
+          <input id="share_copytoclipboard" class="share_text" color-dark style-lable type="text" readonly="readonly" data-clipboard-text="https://crypt.ji/937U2M9" value="crypt.ji/937U2M9"/>
+        </div>
+      </div>
+    </div>
+
+    <div color-bg-light class="share_key" layout="column" layout-align="start center">
+      <div class="share_key_emoji" layout="row" layout-align="center center">
+        <p id="share_currentkey" class="share_key_emoji-item" color-bg-light>
+          <!-- <img class="emoji" draggable="false" alt="🎮" src="http://twemoji.maxcdn.com/svg/1f3ae.svg"> -->
+        </p>
+      </div>
+      <p style-lable class="share_key_sentence">Without the secret key the message will be undecryptable. Find a way to share it!</p>
+      <div class="share_text_wrapper" layout="column" layout-align="center center" wide>
+        <a id="share_copykeytoclipboard" class="share_text" color-bg-main style-lable data-clipboard-text="🎮">COPY YOUR KEY</a>
+      </div>
+    </div>
+
+    <div color-bg-dark class="share_more" layout="column" layout-align="center center">
+      <span uppercase>MOZILLA</span>
+      <p style-lable>Cryptoloji is part of Mozilla ENCRYPT campaign</p>
+    </div>
+  </div>
+  <!-- /SHARE -->
+
+
+  <!-- MORE views/more -->
+  <div color-bg-dark class="section_more section" layout="column" layout-align="start start">
+    <div showItIfMobile class="more_back" color-light to-state="share" wide layout="column" layout-align="center center">
+      BACK TO SHARE
+    </div>
+    <p class="more_text" flex color-light style-text layout="column" layout-align="start end">
+      <span hideItIfMobile class="more_text_title">MORE ABOUT CRYPTOLOJI</span><br>
+      Cryptoloji is a part of Mozilla Foundation's campaing to promote encryptyion.<br>
+      To learn visit advocacy.mozilla.org
+    </p>
+    <div flex></div>
+    <div class="svg_wrapper svg_wrapper_more" data-svg="assets/svg/mozilla_logo.svg"></div>
+  </div>
+  <!-- /MORE -->
+
+  <!-- build:vendorjs vendor.js -->
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="bower_components/lodash/lodash.js"></script>
+  <script type="text/javascript" src="bower_components/fastclick/lib/fastclick.js"></script>
+  <script type="text/javascript" src="bower_components/esrever/esrever.js"></script>
+  <script type="text/javascript" src="bower_components/stateman/stateman.js"></script>
+  <script type="text/javascript" src="bower_components/q/q.js"></script>
+  <script type="text/javascript" src="bower_components/cookie/cookie.js"></script>
+  
+  <script type="text/javascript" src="vendor/gsap/src/uncompressed/TweenLite.js"></script>
+  <script type="text/javascript" scr="vendor/gsap/src/uncompressed/jquery.gsap.js"></script>
+  <script type="text/javascript" src="vendor/gsap/src/uncompressed/plugins/CSSPlugin.js"></script>
+  <script type="text/javascript" src="vendor/gsap/src/uncompressed/plugins/DrawSVGPlugin.js"></script>
+  <script type="text/javascript" src="vendor/gsap/src/uncompressed/easing/EasePack.js"></script>
+
+  <script type="text/javascript" src="bower_components/rebound-js/rebound.js"></script>
+  <script type="text/javascript" src="bower_components/punycode/punycode.js"></script>
+  <script type="text/javascript" src="bower_components/clipboard/dist/clipboard.js"></script>
+  <script type="text/javascript" src="vendor/theater.js"></script>
+  <!-- endbuild -->
+
+  <script type="text/javascript" src="assets/js/touchmouse.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twemoji/1.3.2/twemoji.min.js"></script>
+  
+  <!-- build:js app.js -->
+  <script type="text/javascript" src="libs/crypto-lib/char-list.js"></script>
+  <script type="text/javascript" src="libs/crypto-lib/emoji-list.js"></script>
+  <script type="text/javascript" src="libs/crypto-lib/caesar-shifter.js"></script>
+  <script type="text/javascript" src="libs/crypto-lib/emojifier.js"></script>
+  <script type="text/javascript" src="libs/crypto-lib.js"></script>
+  
+  <script type="text/javascript" src="assets/js/states/decrypt.js"></script>
+  <script type="text/javascript" src="assets/js/states/encrypt.js"></script>
+  <script type="text/javascript" src="assets/js/states/share.js"></script>
+  <script type="text/javascript" src="assets/js/states/onboarding.js"></script>
+  <script type="text/javascript" src="assets/js/states/welcome.js"></script>
+  <script type="text/javascript" src="assets/js/states/loading.js"></script>
+  <script type="text/javascript" src="assets/js/states/more.js"></script>
+  <script type="text/javascript" src="assets/js/states/landing.js"></script>
+  
+  
+  <script type="text/javascript" src="assets/js/visitor.js"></script>
+  <script type="text/javascript" src="assets/js/mq.js"></script>
+  <script type="text/javascript" src="assets/js/api.js"></script>
+  <script type="text/javascript" src="assets/js/ui.js"></script>
+  <script type="text/javascript" src="assets/js/ui/slider_onboarding.js"></script>
+  <script type="text/javascript" src="assets/js/ui/sharer.js"></script>
+  <script type="text/javascript" src="assets/js/utils.js"></script>
+  <script type="text/javascript" src="assets/js/ui/keyslider.js"></script>
+  <script type="text/javascript" src="assets/js/ui/key-modal.js"></script>
+  <script type="text/javascript" src="assets/js/ui/key-panel.js"></script>
+  <script type="text/javascript" src="assets/js/ui/char-counter.js"></script>
+  <script type="text/javascript" src="assets/js/routes.js"></script>
+  <script type="text/javascript" src="assets/js/app.js"></script>
+  <!-- endbuild -->
+
+</body>
+</html>

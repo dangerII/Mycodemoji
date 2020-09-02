@@ -1,0 +1,59 @@
+
+/*background*/
+[color-bg-main]{
+  background-color: #F46060;
+}
+[color-bg-main-alt]{
+  background-color: #005189;
+}
+[color-bg-main-ligther]{
+  background-color: #FBBFBF;
+}
+[color-bg-dark]{
+  background-color: #283344;
+}
+[color-bg-light]{
+  background-color: white;
+}
+
+/*color*/
+[color-main]{
+  color: #F46060;
+}
+[color-main-alt]{
+  color: #005189;
+}
+[color-main-ligther]{
+  color: #FBBFBF;
+}
+[color-dark]{
+  color: #283344;
+}
+[color-light]{
+  color: white;
+}
+
+
+/*fill*/
+[color-fill-main]{
+  fill: #F46060;
+}
+[color-fill-main-alt]{
+  fill: #005189;
+}
+[color-fill-main-ligther]{
+  fill: #FBBFBF;
+}
+[color-fill-dark]{
+  fill: #283344;
+}
+[color-fill-light]{
+  fill: white;
+}
+
+/*border*/
+
+[border-light]{
+  border-color: white;
+}
+
